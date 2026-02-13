@@ -1,12 +1,19 @@
 {
-  "name": "aurelia-2",
-  "version": "1.0.0",
-  "description": "Expert guidance for building modern web applications with the Aurelia 2 framework, including project setup, component development, routing, dependency injection, templating, state management, and best practices.",
-  "author": {
-    "name": "mobilemancer",
-    "url": "https://github.com/mobilemancer"
-  },
-  "repository": "https://github.com/mobilemancer/skills-aurelia-2",
-  "license": "MIT",
-  "keywords": ["aurelia", "aurelia2", "frontend", "web-framework", "javascript", "typescript"]
+    "name": "aurelia-2",
+    "version": "1.0.0",
+    "description": "Expert guidance for building modern web applications with the Aurelia 2 framework, including project setup, component development, routing, dependency injection, templating, state management, and best practices.",
+    "author": {
+        "name": "mobilemancer",
+        "url": "https://github.com/mobilemancer"
+    },
+    "repository": "https://github.com/mobilemancer/skills-aurelia-2",
+    "license": "MIT",
+    "keywords": [
+        "aurelia",
+        "aurelia2",
+        "frontend",
+        "web-framework",
+        "javascript",
+        "typescript"
+    ]
 }
