@@ -23,24 +23,33 @@ Aurelia 2 is a modern, forward-thinking JavaScript framework for building web ap
 ## Start new Project
 
 I prefer the following steps to get started with Aurelia 2, and have a opinionated setup for projects:
+
 ```bash
 npx makes aurelia new-project-name --here -s vitest,playwright,app-with-router
 ```
 
 ## Build and Test
+
 To build the project, use the following command:
+
 ```bash
 npm run build
 ```
+
 To run the development server, use the following command:
+
 ```bash
 npm start
 ```
+
 To run unit tests, use the following command:
+
 ```bash
 npm run test
 ```
+
 To run end-to-end tests, use the following command:
+
 ```bash
 npm run test:e2e
 ```
@@ -52,26 +61,15 @@ After every task and test implementation, make sure to build the app, then run a
 
 All components consists of three files, a .ts file, a .html file and a .css file.
 For styling we use vanilla CSS, and we scope the styles to the component by using the component name in the .css file and then nesting all styles inside it.
+
 ```css
 my-component {
   /* styles here */
 }
 ```
 
-Components needs to be available in the DI container, or they won't render.
-There are two main ways to get components into the DI container:
-
-```ts
-DI.configure({
-  register: [
-    MyComponent
-  ]
-});
-```
-or
-```html
-<import from="./my-component"></import>
-```
+There is no need to use the :host selector, and in fact using it will break the styles, so avoid using it.
+There is no need to import the .css file in the .ts file or the html file, Aurelia will automatically load the .css file.
 
 ## Routing
 
@@ -80,22 +78,45 @@ Use standard Aurelia 2 routing patterns.
 ## Dependency Injection
 
 Use the resolve() method to inject dependencies into components and services.
+
 ```ts
 import { resolve } from 'aurelia';
 
 private ea = resolve(IEventAggregator);
 ```
+
+Components needs to be available in the DI container, or they won't render.
+There are two main ways to get components into the DI container:
+
+```ts
+DI.configure({
+  register: [MyComponent],
+});
+```
+
+or
+
+```html
+<import from="./my-component"></import>
+```
+
 ## Templating
 
 The .call syntax does not work in Aurelia 2, so use the .bind syntax instead for event handlers and data binding.
+
 ```html
-<agent-card repeat.for="agent of agents" agent.bind="agent" loading-agent-id.bind="loadingAgentId"
-              on-edit.bind="(args) => openAgentPanel(args.agent, args.event)"
-              on-chat.bind="(args) => startChat(args.agent, args.event)">
+<agent-card
+  repeat.for="agent of agents"
+  agent.bind="agent"
+  loading-agent-id.bind="loadingAgentId"
+  on-edit.bind="(args) => openAgentPanel(args.agent, args.event)"
+  on-chat.bind="(args) => startChat(args.agent, args.event)"
+>
 </agent-card>
 ```
 
 The .delegate syntax is deprecated, use .trigger instead.
+
 ```html
 <button click.trigger="handleClick()">Click Me</button>
 ```
@@ -115,6 +136,7 @@ Use Aurelia's lifecycle hooks to manage component state and behavior effectively
 Write unit tests for components and services to ensure reliability and maintainability.
 
 Lifecycle hooks best practices:
+
 - Prefer early exits—perform checks at the start of hooks and return early to minimise nesting.
 - Clean up observers, timeouts, event listeners, or 3rd-party widgets in the opposite hook (unbinding/detaching or dispose).
 - Avoid heavy work in the constructor. Move anything needing bindables or DOM to later hooks.

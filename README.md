@@ -58,6 +58,12 @@ Install as a skill plugin:
 copilot plugin install /path/to/skills-aurelia-2
 ```
 
+Install from repository:
+
+```bash
+copilot plugin install @mobilemancer/skills-aurelia-2
+```
+
 Or add to your project's Copilot configuration to share with your team.
 
 ## What the Skill Provides
